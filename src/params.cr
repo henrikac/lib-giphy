@@ -45,4 +45,21 @@ module Lib::Giphy
       @hash
     end
   end
+
+  class TranslateParam
+    @hash = Hash(String, String).new
+
+    def initialize(weirdness = 0, random_id = "")
+      if weirdness < 0 || weirdness > 10
+        raise ArgumentError.new(message = "weirdness has to be between 0 and 10")
+      end
+
+      @hash["weirdness"] = weirdness.to_s
+      @hash["random_id"] = random_id
+    end
+
+    def to_hash : Hash(String, String)
+      @hash
+    end
+  end
 end

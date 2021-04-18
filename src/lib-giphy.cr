@@ -107,8 +107,43 @@ module Lib::Giphy
       return GifData.from_json(response.body)
     end
 
-    def translate
-      raise NotImplementedError.new("translate")
+    # Returns a single gif based on the search term *s*.
+    # Translate converts words and phrases to gifs using 
+    # GIPHY's special sauce algorithm.
+    #
+    # Example: (default search)
+    # ```
+    # g = Lib::Giphy::Giphy.new <api_key>
+    # gif = g.translate("oh weeew")
+    #
+    # puts gif.data.title
+    # ```
+    def translate(s : String, params = TranslateParam.new) : GifTranslate
+      url_path = "v1/gifs/translate"
+      param_hash = Hash(String, String).new
+      param_hash["api_key"] = @api_key
+      param_hash["s"] = s
+
+      params.to_hash.each do |key, value|
+        if !value.empty?
+          param_hash[key] = value
+        end
+      end
+
+      query_string = URI::Params.encode(param_hash)
+
+      response = HTTP::Client.get(
+        URI.new("http", HOST, nil, url_path, query: query_string),
+        HEADERS,
+      )
+
+      if !response.success?
+        # TODO: Check if okay? or if there is a better way
+        # to return an empty GifData, or maybe return nil instead?
+        return GifTranslate.new JSON::PullParser.new "{}"
+      end
+
+      return GifTranslate.from_json(response.body)
     end
 
     def random

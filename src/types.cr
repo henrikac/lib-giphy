@@ -12,146 +12,155 @@ module Lib::Giphy
 
     @[JSON::Field(key: "meta")]
     property meta : Meta
-
-    class Gif
-      include JSON::Serializable
-
-      # By default, this is almost always GIF
-      @[JSON::Field(key: "type")]
-      property type : String?
-
-      # This GIF's unique ID
-      @[JSON::Field(key: "id")]
-      property id : String?
-
-      # The unique slug used in this GIF's URL
-      @[JSON::Field(key: "slug")]
-      property slug : String?
-
-      # The unique URL for this GIF
-      @[JSON::Field(key: "url")]
-      property url : String?
-
-      # The unique bit.ly URL for this GIF
-      @[JSON::Field(key: "bitly_url")]
-      property bitly_url : String?
-
-      # A URL used for embedding this GIF
-      @[JSON::Field(key: "embed_url")]
-      property embed_url : String?
-
-      # The username this GIF is attached to, if applicable
-      @[JSON::Field(key: "username")]
-      property username : String?
-
-      # The page on which this GIF was found
-      @[JSON::Field(key: "source")]
-      property source : String?
-
-      # The MPAA-style rating for this content.
-      # Examples include Y, G, PG, PG-13 and R
-      @[JSON::Field(key: "rating")]
-      property rating : String?
-
-      # Currently unused
-      @[JSON::Field(key: "content_url")]
-      property content_url : String?
-
-      # An object containing data about the user associated with this GIF, if applicable.
-      @[JSON::Field(key: "user")]
-      property user : User?
-
-      # The top level domain of the source URL.
-      @[JSON::Field(key: "source_tld")]
-      property source_tld : String?
-
-      # The URL of the webpage on which this GIF was found.
-      @[JSON::Field(key: "source_post_url")]
-      property source_post_url : String?
-      
-      # The date on which this GIF was last updated.
-      @[JSON::Field(key: "update_datetime")]
-      property update_datetime : String?
-
-      # The date this GIF was added to the GIPHY database.
-      @[JSON::Field(key: "create_datetime")]
-      property create_datetime : String?
-
-      # The creation or upload date from this GIF's source.
-      @[JSON::Field(key: "import_datetime")]
-      property import_datetime : String?
-
-      # The date on which this gif was marked trending, if applicable.
-      @[JSON::Field(key: "trending_datetime")]
-      property trending_datetime : String?
-
-      # An object containing data for various available formats and sizes of this GIF.
-      @[JSON::Field(key: "images")]
-      property images : Images
-
-      # The title that appears on giphy.com for this GIF.
-      @[JSON::Field(key: "title")]
-      property title : String?
-    end
-
-    class User
-      include JSON::Serializable
-
-      # The URL for this user's avatar image.
-      @[JSON::Field(key: "avatar_url")]
-      property avatar_url : String?
-
-      # The URL for the banner image that appears atop this user's profile page.
-      @[JSON::Field(key: "banner_url")]
-      property banner_url : String?
-
-      # The URL for this user's GIPHY profile.
-      @[JSON::Field(key: "profile_url")]
-      property profile_url : String?
-
-      # The username associated with this user.
-      @[JSON::Field(key: "username")]
-      property username : String?
-
-      # The display name associated with this user
-      # (contains formatting the base username might not).
-      @[JSON::Field(key: "display_name")]
-      property display_name : String?
-    end
-
-    class Meta
-      include JSON::Serializable
-
-      # HTTP Response Message. (required)
-      @[JSON::Field(key: "msg")]
-      property msg : String
-
-      # HTTP Response Code. (required)
-      @[JSON::Field(key: "status")]
-      property status : Int32
-
-      # A unique ID paired with this response from the API.
-      @[JSON::Field(key: "response_id")]
-      property response_id : String?
-    end
-
-    class Pagination
-      include JSON::Serializable
-
-      # Position in pagination.
-      @[JSON::Field(key: "offset")]
-      property offset : Int32
-
-      # Total number of items available (not returned on every endpoint).
-      @[JSON::Field(key: "total_count")]
-      property total_count : Int32
-
-      # Total number of items returned.
-      @[JSON::Field(key: "count")]
-      property count : Int32
-    end
   end
 
+  class GifTranslate
+    include JSON::Serializable
+
+    @[JSON::Field(key: "data")]
+    property data : Gif
+
+    @[JSON::Field(key: "meta")]
+    property meta : Meta
+  end
+
+  class Gif
+    include JSON::Serializable
+
+    # By default, this is almost always GIF
+    @[JSON::Field(key: "type")]
+    property type : String?
+
+    # This GIF's unique ID
+    @[JSON::Field(key: "id")]
+    property id : String?
+
+    # The unique slug used in this GIF's URL
+    @[JSON::Field(key: "slug")]
+    property slug : String?
+
+    # The unique URL for this GIF
+    @[JSON::Field(key: "url")]
+    property url : String?
+
+    # The unique bit.ly URL for this GIF
+    @[JSON::Field(key: "bitly_url")]
+    property bitly_url : String?
+
+    # A URL used for embedding this GIF
+    @[JSON::Field(key: "embed_url")]
+    property embed_url : String?
+
+    # The username this GIF is attached to, if applicable
+    @[JSON::Field(key: "username")]
+    property username : String?
+
+    # The page on which this GIF was found
+    @[JSON::Field(key: "source")]
+    property source : String?
+
+    # The MPAA-style rating for this content.
+    # Examples include Y, G, PG, PG-13 and R
+    @[JSON::Field(key: "rating")]
+    property rating : String?
+
+    # Currently unused
+    @[JSON::Field(key: "content_url")]
+    property content_url : String?
+
+    # An object containing data about the user associated with this GIF, if applicable.
+    @[JSON::Field(key: "user")]
+    property user : User?
+
+    # The top level domain of the source URL.
+    @[JSON::Field(key: "source_tld")]
+    property source_tld : String?
+
+    # The URL of the webpage on which this GIF was found.
+    @[JSON::Field(key: "source_post_url")]
+    property source_post_url : String?
+    
+    # The date on which this GIF was last updated.
+    @[JSON::Field(key: "update_datetime")]
+    property update_datetime : String?
+
+    # The date this GIF was added to the GIPHY database.
+    @[JSON::Field(key: "create_datetime")]
+    property create_datetime : String?
+
+    # The creation or upload date from this GIF's source.
+    @[JSON::Field(key: "import_datetime")]
+    property import_datetime : String?
+
+    # The date on which this gif was marked trending, if applicable.
+    @[JSON::Field(key: "trending_datetime")]
+    property trending_datetime : String?
+
+    # An object containing data for various available formats and sizes of this GIF.
+    @[JSON::Field(key: "images")]
+    property images : Images
+
+    # The title that appears on giphy.com for this GIF.
+    @[JSON::Field(key: "title")]
+    property title : String?
+  end
+
+  class User
+    include JSON::Serializable
+
+    # The URL for this user's avatar image.
+    @[JSON::Field(key: "avatar_url")]
+    property avatar_url : String?
+
+    # The URL for the banner image that appears atop this user's profile page.
+    @[JSON::Field(key: "banner_url")]
+    property banner_url : String?
+
+    # The URL for this user's GIPHY profile.
+    @[JSON::Field(key: "profile_url")]
+    property profile_url : String?
+
+    # The username associated with this user.
+    @[JSON::Field(key: "username")]
+    property username : String?
+
+    # The display name associated with this user
+    # (contains formatting the base username might not).
+    @[JSON::Field(key: "display_name")]
+    property display_name : String?
+  end
+
+  class Meta
+    include JSON::Serializable
+
+    # HTTP Response Message. (required)
+    @[JSON::Field(key: "msg")]
+    property msg : String
+
+    # HTTP Response Code. (required)
+    @[JSON::Field(key: "status")]
+    property status : Int32
+
+    # A unique ID paired with this response from the API.
+    @[JSON::Field(key: "response_id")]
+    property response_id : String?
+  end
+
+  class Pagination
+    include JSON::Serializable
+
+    # Position in pagination.
+    @[JSON::Field(key: "offset")]
+    property offset : Int32
+
+    # Total number of items available (not returned on every endpoint).
+    @[JSON::Field(key: "total_count")]
+    property total_count : Int32
+
+    # Total number of items returned.
+    @[JSON::Field(key: "count")]
+    property count : Int32
+  end
 
   class Images
     include JSON::Serializable
