@@ -1,16 +1,29 @@
 require "http/client"
-require "json"
 
-# TODO: Write documentation for `Lib::Giphy`
+# LibGiphy is a library that makes it easy to interact with the GIPHY API.
 module Lib::Giphy
   VERSION = "0.1.0"
 
+  # A Giphy is the object that communicates with the GIPHY API.
+  #
+  # To create a Giphy
+  # ```
+  # giphy = Lib::Giphy::Giphy <api_key>
+  # ```
+  #
+  # An *api_key* is required for Giphy to communite with the GIHPY API.
+  #
+  # Search for gifs with `#search`
+  # Get trending gifs with `#trending`
+  # Get a gif that has been through GIPHY's special sauce algorithm with `#translate`
+  # Get a random gif with `#random`
   class Giphy
     HOST = "api.giphy.com"
     HEADERS = HTTP::Headers{
       "Content-Type" => "application/json",
     }
 
+    # Creates a new Giphy with the specified *api_key*
     def initialize(api_key : String)
       if api_key.empty?
         raise ArgumentError.new(message = "api_key is undefined")
@@ -53,20 +66,13 @@ module Lib::Giphy
         end
       end
 
-      query_string = URI::Params.encode(param_hash)
+      response = send_request(url_path, param_hash)
 
-      response = HTTP::Client.get(
-        URI.new("http", HOST, nil, url_path, query: query_string),
-        HEADERS,
-      )
-
-      if !response.success?
-        # TODO: Check if okay? or if there is a better way
-        # to return an empty GifData, or maybe return nil instead?
-        return GifData.new JSON::PullParser.new "{}"
+      if response.status.ok?
+        return GifData.from_json(response.body)
       end
 
-      return GifData.from_json(response.body)
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
     end
 
     # Returns the most relevant and engaging gifs
@@ -91,20 +97,13 @@ module Lib::Giphy
         end
       end
 
-      query_string = URI::Params.encode(param_hash)
+      response = send_request(url_path, param_hash)
 
-      response = HTTP::Client.get(
-        URI.new("http", HOST, nil, url_path, query: query_string),
-        HEADERS,
-      )
-
-      if !response.success?
-        # TODO: Check if okay? or if there is a better way
-        # to return an empty GifData, or maybe return nil instead?
-        return GifData.new JSON::PullParser.new "{}"
+      if response.status.ok?
+        return GifData.from_json(response.body)
       end
 
-      return GifData.from_json(response.body)
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
     end
 
     # Returns a single gif based on the search term *s*.
@@ -119,6 +118,10 @@ module Lib::Giphy
     # puts gif.data.title
     # ```
     def translate(s : String, params = TranslateParam.new) : GifDataSingle
+      if s.empty?
+        raise ArgumentError.new(message = "s is undefined")
+      end
+
       url_path = "v1/gifs/translate"
       param_hash = Hash(String, String).new
       param_hash["api_key"] = @api_key
@@ -130,23 +133,16 @@ module Lib::Giphy
         end
       end
 
-      query_string = URI::Params.encode(param_hash)
+      response = send_request(url_path, param_hash)
 
-      response = HTTP::Client.get(
-        URI.new("http", HOST, nil, url_path, query: query_string),
-        HEADERS,
-      )
-
-      if !response.success?
-        # TODO: Check if okay? or if there is a better way
-        # to return an empty GifDataSingle, or maybe return nil instead?
-        return GifDataSingle.new JSON::PullParser.new "{}"
+      if response.status.ok?
+        return GifDataSingle.from_json(response.body)
       end
 
-      return GifDataSingle.from_json(response.body)
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
     end
 
-    # Returns a random gif based specified *tag*.
+    # Returns a random gif based on the specified *tag*.
     # If tag == "" the gif will be completely random.
     #
     # Example: (default search)
@@ -168,20 +164,22 @@ module Lib::Giphy
         end
       end
 
-      query_string = URI::Params.encode(param_hash)
+      response = send_request(url_path, param_hash)
 
-      response = HTTP::Client.get(
-        URI.new("http", HOST, nil, url_path, query: query_string),
-        HEADERS,
-      )
-
-      if !response.success?
-        # TODO: Check if okay? or if there is a better way
-        # to return an empty GifDataSingle, or maybe return nil instead?
-        return GifDataSingle.new JSON::PullParser.new "{}"
+      if response.status.ok?
+        return GifDataSingle.from_json(response.body)
       end
 
-      return GifDataSingle.from_json(response.body)
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
+    end
+
+    # Returns the response received from GIPHY.
+    private def send_request(path : String, params : Hash(String, String)) : HTTP::Client::Response
+      query_string = URI::Params.encode(params)
+      return HTTP::Client.get(
+        URI.new("http", HOST, nil, path, query: query_string),
+        HEADERS,
+      )
     end
   end
 end
