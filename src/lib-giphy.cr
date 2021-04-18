@@ -19,7 +19,7 @@ module Lib::Giphy
       @api_key = api_key
     end
 
-    # Returns gifs from GIPHY based on search term
+    # Returns gifs from GIPHY based on search term *q*
     #
     # Example: (default search)
     # ```
@@ -66,13 +66,45 @@ module Lib::Giphy
         return GifData.new JSON::PullParser.new "{}"
       end
 
-      gif_data = GifData.from_json(response.body)
-
-      return gif_data
+      return GifData.from_json(response.body)
     end
 
-    def trending
-      raise NotImplementedError.new("trending")
+    # Returns the most relevant and engaging gifs
+    #
+    # Example: (default search)
+    # ```
+    # g = Lib::Giphy::Giphy.new <api_key>
+    # gifs = g.trending() # returns 25 gifs by default
+    #
+    # gifs.data.each do |gif|
+    #   puts gif.title
+    # end
+    # ```
+    def trending(params = TrendingParam.new) : GifData
+      url_path = "v1/gifs/trending"
+      param_hash = Hash(String, String).new
+      param_hash["api_key"] = @api_key
+
+      params.to_hash.each do |key, value|
+        if !value.empty?
+          param_hash[key] = value
+        end
+      end
+
+      query_string = URI::Params.encode(param_hash)
+
+      response = HTTP::Client.get(
+        URI.new("http", HOST, nil, url_path, query: query_string),
+        HEADERS,
+      )
+
+      if !response.success?
+        # TODO: Check if okay? or if there is a better way
+        # to return an empty GifData, or maybe return nil instead?
+        return GifData.new JSON::PullParser.new "{}"
+      end
+
+      return GifData.from_json(response.body)
     end
 
     def translate
