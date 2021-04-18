@@ -59,7 +59,7 @@ module Lib::Giphy
 
       # An object containing data about the user associated with this GIF, if applicable.
       @[JSON::Field(key: "user")]
-      property user : User
+      property user : User?
 
       # The top level domain of the source URL.
       @[JSON::Field(key: "source_tld")]

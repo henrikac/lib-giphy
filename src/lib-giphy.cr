@@ -7,6 +7,9 @@ module Lib::Giphy
 
   class Giphy
     HOST = "api.giphy.com"
+    HEADERS = HTTP::Headers{
+      "Content-Type" => "application/json",
+    }
 
     def initialize(api_key : String)
       if api_key.empty?
@@ -16,6 +19,24 @@ module Lib::Giphy
       @api_key = api_key
     end
 
+    # Returns gifs from GIPHY based on search term
+    #
+    # Example: (default search)
+    # ```
+    # g = Lib::Giphy::Giphy.new <api_key>
+    # gifs = g.search("cats") # returns 25 gifs by default
+    #
+    # gifs.data.each do |gif|
+    #   puts gif.title
+    # end
+    # ```
+    #
+    # Example: (search with params)
+    # ```
+    # g = Lib::Giphy::Giphy.new <api_key>
+    # params = Lib::Giphy::SearchParam.new 10
+    # gifs = g.search("cats", params) # returns 10 gifs
+    # ```
     def search(q : String, params = SearchParam.new) : GifData
       if q.empty?
         raise ArgumentError.new(message = "q is undefined")
@@ -32,11 +53,21 @@ module Lib::Giphy
         end
       end
 
-      qp = URI::Params.encode(param_hash)
+      query_string = URI::Params.encode(param_hash)
 
-      response = HTTP::Client.get URI.new("http", HOST, nil, url_path, query: qp)
+      response = HTTP::Client.get(
+        URI.new("http", HOST, nil, url_path, query: query_string),
+        HEADERS,
+      )
+
+      if !response.success?
+        # TODO: Check if okay? or if there is a better way
+        # to return an empty GifData, or maybe return nil instead?
+        return GifData.new JSON::PullParser.new "{}"
+      end
 
       gif_data = GifData.from_json(response.body)
+
       return gif_data
     end
 
