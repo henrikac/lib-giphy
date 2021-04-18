@@ -14,7 +14,7 @@ module Lib::Giphy
     property meta : Meta
   end
 
-  class GifTranslate
+  class GifDataSingle
     include JSON::Serializable
 
     @[JSON::Field(key: "data")]

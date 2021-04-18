@@ -62,4 +62,17 @@ module Lib::Giphy
       @hash
     end
   end
+
+  class RandomParam
+    @hash = Hash(String, String).new
+
+    def initialize(rating = "", random_id = "")
+      @hash["rating"] = rating
+      @hash["random_id"] = random_id
+    end
+
+    def to_hash : Hash(String, String)
+      @hash
+    end
+  end
 end
