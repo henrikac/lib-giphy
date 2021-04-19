@@ -22,9 +22,25 @@ To get the API key that is required to create a new `Lib::Giphy::Giphy` you need
 
 ```crystal
 require "lib-giphy"
+
+giphy = Lib::Giphy::Giphy <api_key>
+
+gifs = giphy.search("cats") # => returns 25 gifs
+trend_gifs = giphy.trending() # => returns 25 gifs
+translated = giphy.translate("cats") # => returns 1 gif
+random_gif = giphy.random() # => returns 1 gif
+
+gifs.data.each do |gif|
+  puts gif.title
+end
 ```
 
-TODO: Write usage instructions here
+Each `Giphy` method can also takes a `Param` object.  
+Different types of `Param`:
+* `SearchParam`
+* `TrendingParam`
+* `TranslateParam`
+* `RandomParam`
 
 ## Contributing
 
