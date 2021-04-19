@@ -56,15 +56,8 @@ module Lib::Giphy
       end
 
       url_path = "v1/gifs/search"
-      param_hash = Hash(String, String).new
-      param_hash["api_key"] = @api_key
+      param_hash = get_param_hash(params)
       param_hash["q"] = q
-
-      params.to_hash.each do |key, value|
-        if !value.empty?
-          param_hash[key] = value
-        end
-      end
 
       response = send_request(url_path, param_hash)
 
@@ -88,14 +81,7 @@ module Lib::Giphy
     # ```
     def trending(params = TrendingParam.new) : GifData
       url_path = "v1/gifs/trending"
-      param_hash = Hash(String, String).new
-      param_hash["api_key"] = @api_key
-
-      params.to_hash.each do |key, value|
-        if !value.empty?
-          param_hash[key] = value
-        end
-      end
+      param_hash = get_param_hash(params)
 
       response = send_request(url_path, param_hash)
 
@@ -123,15 +109,8 @@ module Lib::Giphy
       end
 
       url_path = "v1/gifs/translate"
-      param_hash = Hash(String, String).new
-      param_hash["api_key"] = @api_key
+      param_hash = get_param_hash(params)
       param_hash["s"] = s
-
-      params.to_hash.each do |key, value|
-        if !value.empty?
-          param_hash[key] = value
-        end
-      end
 
       response = send_request(url_path, param_hash)
 
@@ -154,15 +133,8 @@ module Lib::Giphy
     # ```
     def random(tag = "", params = RandomParam.new) : GifDataSingle
       url_path = "v1/gifs/random"
-      param_hash = Hash(String, String).new
-      param_hash["api_key"] = @api_key
+      param_hash = get_param_hash(params)
       param_hash["tag"] = tag
-
-      params.to_hash.each do |key, value|
-        if !value.empty?
-          param_hash[key] = value
-        end
-      end
 
       response = send_request(url_path, param_hash)
 
@@ -171,6 +143,21 @@ module Lib::Giphy
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")
+    end
+
+    # Returns a Hash with parameters that is required to send
+    # a request to the GIPHY API.
+    private def get_param_hash(params : Param) : Hash(String, String)
+      hash = Hash(String, String).new
+      hash["api_key"] = @api_key
+
+      params.to_hash.each do |key, value|
+        if !value.empty?
+          hash[key] = value
+        end
+      end
+
+      return hash
     end
 
     # Returns the response received from GIPHY.
