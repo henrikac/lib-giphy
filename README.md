@@ -1,6 +1,10 @@
 # lib-giphy
 
-TODO: Write a description here
+A library that makes it easy to interact with the [GIPHY API](https://developers.giphy.com/).
+
+## Requirements
+
+To get the API key that is required to create a new `Lib::Giphy::Giphy` you need to create a GIPHY app.
 
 ## Installation
 
@@ -9,7 +13,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      lib-giphy:
-       github: your-github-user/lib-giphy
+       github: henrikac/lib-giphy
    ```
 
 2. Run `shards install`
@@ -22,13 +26,9 @@ require "lib-giphy"
 
 TODO: Write usage instructions here
 
-## Development
-
-TODO: Write development instructions here
-
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/lib-giphy/fork>)
+1. Fork it (<https://github.com/henrikac/lib-giphy/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +36,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Henrik Christensen](https://github.com/your-github-user) - creator and maintainer
+- [Henrik Christensen](https://github.com/henrikac) - creator and maintainer
