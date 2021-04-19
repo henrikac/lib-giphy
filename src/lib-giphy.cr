@@ -11,12 +11,7 @@ module Lib::Giphy
   # giphy = Lib::Giphy::Giphy <api_key>
   # ```
   #
-  # An *api_key* is required for Giphy to communite with the GIHPY API.
-  #
-  # Search for gifs with `#search`
-  # Get trending gifs with `#trending`
-  # Get a gif that has been through GIPHY's special sauce algorithm with `#translate`
-  # Get a random gif with `#random`
+  # NOTE: An *api_key* is required for Giphy to communite with the GIHPY API.
   class Giphy
     HOST = "api.giphy.com"
     HEADERS = HTTP::Headers{
