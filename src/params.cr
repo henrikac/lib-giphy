@@ -1,7 +1,13 @@
 module Lib::Giphy
-  class SearchParam
-    @hash = Hash(String, String).new
+  private class Param
+    @params = Hash(String, String).new
 
+    def to_hash : Hash(String, String)
+      @params
+    end
+  end
+
+  class SearchParam < Param
     def initialize(limit = 25, offset = 0, rating = "", lang = "", random_id = "")
       if limit < 1
         raise ArgumentError.new(message = "limit has to be greater than 0")
@@ -11,21 +17,15 @@ module Lib::Giphy
         raise ArgumentError.new(message = "offset has to be between 0 and 4999")
       end
 
-      @hash["limit"] = limit.to_s
-      @hash["offset"] = offset.to_s
-      @hash["rating"] = rating
-      @hash["lang"] = lang
-      @hash["random_id"] = random_id
-    end
-
-    def to_hash : Hash(String, String)
-      @hash
+      @params["limit"] = limit.to_s
+      @params["offset"] = offset.to_s
+      @params["rating"] = rating
+      @params["lang"] = lang
+      @params["random_id"] = random_id
     end
   end
 
-  class TrendingParam
-    @hash = Hash(String, String).new
-
+  class TrendingParam < Param
     def initialize(limit = 25, offset = 0, rating = "", random_id = "")
       if limit < 1
         raise ArgumentError.new(message = "limit has to be greater than 0")
@@ -35,44 +35,28 @@ module Lib::Giphy
         raise ArgumentError.new(message = "offset has to be between 0 and 4999")
       end
 
-      @hash["limit"] = limit.to_s
-      @hash["offset"] = offset.to_s
-      @hash["rating"] = rating
-      @hash["random_id"] = random_id
-    end
-
-    def to_hash : Hash(String, String)
-      @hash
+      @params["limit"] = limit.to_s
+      @params["offset"] = offset.to_s
+      @params["rating"] = rating
+      @params["random_id"] = random_id
     end
   end
 
-  class TranslateParam
-    @hash = Hash(String, String).new
-
+  class TranslateParam < Param
     def initialize(weirdness = 0, random_id = "")
       if weirdness < 0 || weirdness > 10
         raise ArgumentError.new(message = "weirdness has to be between 0 and 10")
       end
 
-      @hash["weirdness"] = weirdness.to_s
-      @hash["random_id"] = random_id
-    end
-
-    def to_hash : Hash(String, String)
-      @hash
+      @params["weirdness"] = weirdness.to_s
+      @params["random_id"] = random_id
     end
   end
 
-  class RandomParam
-    @hash = Hash(String, String).new
-
+  class RandomParam < Param
     def initialize(rating = "", random_id = "")
-      @hash["rating"] = rating
-      @hash["random_id"] = random_id
-    end
-
-    def to_hash : Hash(String, String)
-      @hash
+      @params["rating"] = rating
+      @params["random_id"] = random_id
     end
   end
 end
