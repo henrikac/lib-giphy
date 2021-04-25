@@ -1,18 +1,18 @@
 require "http/client"
 
-# LibGiphy is a library that makes it easy to interact with the GIPHY API.
-module Lib::Giphy
+# `LibGiphy` is a library that makes it easy to interact with the GIPHY API.
+module Giphy
   VERSION = "0.1.0"
 
-  # A Giphy is the object that communicates with the GIPHY API.
+  # Giphy::Client is the object that communicates with the GIPHY API.
   #
-  # To create a Giphy
+  # To create a Giphy::Client
   # ```
-  # giphy = Lib::Giphy::Giphy <api_key>
+  # giphy = Giphy::Client.new <api_key>
   # ```
   #
-  # NOTE: An *api_key* is required for Giphy to communite with the GIHPY API.
-  class Giphy
+  # NOTE: An *api_key* is required for Giphy::Client to communite with the GIHPY API.
+  class Client
     HOST = "api.giphy.com"
     HEADERS = HTTP::Headers{
       "Content-Type" => "application/json",
@@ -31,7 +31,7 @@ module Lib::Giphy
     #
     # Example: (default search)
     # ```
-    # g = Lib::Giphy::Giphy.new <api_key>
+    # g = Giphy::Client.new <api_key>
     # gifs = g.search("cats") # returns 25 gifs by default
     #
     # gifs.data.each do |gif|
@@ -41,8 +41,8 @@ module Lib::Giphy
     #
     # Example: (search with params)
     # ```
-    # g = Lib::Giphy::Giphy.new <api_key>
-    # params = Lib::Giphy::SearchParam.new 10
+    # g = Giphy::Client.new <api_key>
+    # params = Giphy::SearchParam.new 10
     # gifs = g.search("cats", params) # returns 10 gifs
     # ```
     def search(q : String, params = SearchParam.new) : GifData
@@ -67,7 +67,7 @@ module Lib::Giphy
     #
     # Example: (default search)
     # ```
-    # g = Lib::Giphy::Giphy.new <api_key>
+    # g = Giphy::Client.new <api_key>
     # gifs = g.trending() # returns 25 gifs by default
     #
     # gifs.data.each do |gif|
@@ -93,7 +93,7 @@ module Lib::Giphy
     #
     # Example: (default search)
     # ```
-    # g = Lib::Giphy::Giphy.new <api_key>
+    # g = Giphy::Client.new <api_key>
     # gif = g.translate("oh weeew")
     #
     # puts gif.data.title
@@ -121,7 +121,7 @@ module Lib::Giphy
     #
     # Example: (default search)
     # ```
-    # g = Lib::Giphy::Giphy.new <api_key>
+    # g = Giphy::Client.new <api_key>
     # gif = g.random("oh weeew")
     #
     # puts gif.data.url

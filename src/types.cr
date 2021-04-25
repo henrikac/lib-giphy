@@ -1,6 +1,6 @@
 require "json"
 
-module Lib::Giphy
+module Giphy
   class GifData
     include JSON::Serializable
 

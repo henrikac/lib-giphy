@@ -1,5 +1,5 @@
-module Lib::Giphy
-  # Param represents param types that can be used is various `Giphy` methods.
+module Giphy
+  # Param represents param types that can be used in various `Giphy::Client` methods.
   class Param
     @params = Hash(String, String).new
 
@@ -10,7 +10,7 @@ module Lib::Giphy
   end
 
   # SearchParam contains additional parameters that can be used when
-  # calling `Giphy.search`.
+  # calling `Giphy::Client#search`.
   class SearchParam < Param
     # Creates a new `SearchParam` with the specified *limit*, *offset*, *rating*,
     # *lang* and *random_id*.
@@ -36,7 +36,7 @@ module Lib::Giphy
   end
 
   # TrendingParam contains additional parameters that can be used when
-  # calling `Giphy.trending`.
+  # calling `Giphy::Client#trending`.
   class TrendingParam < Param
     # Creates a new `TrendingParam` with the specified *limit*, *offset*, *rating*
     # and *random_id*.
@@ -61,7 +61,7 @@ module Lib::Giphy
   end
 
   # TranslateParam contains additional parameters that can be used when
-  # calling `Giphy.translate`.
+  # calling `Giphy::Client#translate`.
   class TranslateParam < Param
     # Creates a new `TranslateParam` with the specified *weirdness* and *random_id*.
     #
@@ -78,7 +78,7 @@ module Lib::Giphy
   end
 
   # RandomParam contains additional parameters that can be used when
-  # calling `Giphy.random`.
+  # calling `Giphy::Client#random`.
   class RandomParam < Param
     # Creates a new `RandomParam` with the specified *rating* and *random_id*.
     def initialize(rating = "", random_id = "")

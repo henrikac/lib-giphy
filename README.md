@@ -4,7 +4,7 @@ A library that makes it easy to interact with the [GIPHY API](https://developers
 
 ## Requirements
 
-To get the API key that is required to create a new `Lib::Giphy::Giphy` you need to create a GIPHY app.
+To get the API key that is required to create a new `Giphy::Client` you need to create a GIPHY app.
 
 ## Installation
 
@@ -23,7 +23,7 @@ To get the API key that is required to create a new `Lib::Giphy::Giphy` you need
 ```crystal
 require "lib-giphy"
 
-giphy = Lib::Giphy::Giphy <api_key>
+giphy = Giphy::Client.new <api_key>
 
 gifs = giphy.search("cats") # => returns 25 gifs
 trend_gifs = giphy.trending() # => returns 25 gifs
@@ -35,7 +35,7 @@ gifs.data.each do |gif|
 end
 ```
 
-Each `Giphy` method can also takes a `Param` object.  
+Each `Giphy::Client` method can also takes a `Param` object.  
 Different types of `Param`:
 * `SearchParam`
 * `TrendingParam`
