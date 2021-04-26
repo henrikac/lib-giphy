@@ -27,11 +27,13 @@ module Giphy
         raise ArgumentError.new(message = "offset has to be between 0 and 4999")
       end
 
-      @params["limit"] = limit.to_s
-      @params["offset"] = offset.to_s
-      @params["rating"] = rating
-      @params["lang"] = lang
-      @params["random_id"] = random_id
+      @params = {
+        "limit" => limit.to_s,
+        "offset" => offset.to_s,
+        "rating" => rating,
+        "lang" => lang,
+        "random_id" => random_id,
+      }
     end
   end
 
@@ -53,10 +55,12 @@ module Giphy
         raise ArgumentError.new(message = "offset has to be between 0 and 4999")
       end
 
-      @params["limit"] = limit.to_s
-      @params["offset"] = offset.to_s
-      @params["rating"] = rating
-      @params["random_id"] = random_id
+      @params = {
+        "limit" => limit.to_s,
+        "offset" => offset.to_s,
+        "rating" => rating,
+        "random_id" => random_id,
+      }
     end
   end
 
@@ -72,8 +76,10 @@ module Giphy
         raise ArgumentError.new(message = "weirdness has to be between 0 and 10")
       end
 
-      @params["weirdness"] = weirdness.to_s
-      @params["random_id"] = random_id
+      @params = {
+        "weirdness" => weirdness.to_s,
+        "random_id" => random_id,
+      }
     end
   end
 
@@ -82,8 +88,10 @@ module Giphy
   class RandomParam < Param
     # Creates a new `RandomParam` with the specified *rating* and *random_id*.
     def initialize(rating = "", random_id = "")
-      @params["rating"] = rating
-      @params["random_id"] = random_id
+      @params = {
+        "rating" => rating,
+        "random_id" => random_id,
+      }
     end
   end
 end
