@@ -2,7 +2,7 @@ require "http/client"
 
 # `LibGiphy` is a library that makes it easy to interact with the GIPHY API.
 module Giphy
-  VERSION = "0.1.0"
+  VERSION = "0.2.0"
 
   # Giphy::Client is the object that communicates with the GIPHY API.
   #
