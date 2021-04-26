@@ -159,7 +159,7 @@ module Giphy
     private def send_request(path : String, params : Hash(String, String)) : HTTP::Client::Response
       query_string = URI::Params.encode(params)
       return HTTP::Client.get(
-        URI.new("http", HOST, nil, path, query: query_string),
+        URI.new("https", HOST, nil, path, query: query_string),
         HEADERS,
       )
     end
