@@ -50,7 +50,7 @@ module Giphy
         raise ArgumentError.new(message = "q is undefined")
       end
 
-      url_path = "v1/gifs/search"
+      url_path = "/v1/gifs/search"
       param_hash = get_param_hash(params)
       param_hash["q"] = q
 
@@ -75,7 +75,7 @@ module Giphy
     # end
     # ```
     def trending(params = TrendingParam.new) : GifData
-      url_path = "v1/gifs/trending"
+      url_path = "/v1/gifs/trending"
       param_hash = get_param_hash(params)
 
       response = send_request(url_path, param_hash)
@@ -103,7 +103,7 @@ module Giphy
         raise ArgumentError.new(message = "s is undefined")
       end
 
-      url_path = "v1/gifs/translate"
+      url_path = "/v1/gifs/translate"
       param_hash = get_param_hash(params)
       param_hash["s"] = s
 
@@ -127,9 +127,12 @@ module Giphy
     # puts gif.data.url
     # ```
     def random(tag = "", params = RandomParam.new) : GifDataSingle
-      url_path = "v1/gifs/random"
+      url_path = "/v1/gifs/random"
       param_hash = get_param_hash(params)
-      param_hash["tag"] = tag
+
+      if !tag.empty?
+        param_hash["tag"] = tag
+      end
 
       response = send_request(url_path, param_hash)
 

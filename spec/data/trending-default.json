@@ -1,0 +1,13 @@
+{
+  "data":[],
+  "pagination":{
+    "offset":0,
+    "total_count": 25000,
+    "count": 25
+  },
+  "meta":{
+    "msg": "OK",
+    "status": 200,
+    "response_id": "random-response-id"
+  }
+}

@@ -6,4 +6,11 @@ authors:
 
 crystal: 1.0.0
 
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
+  dotenv:
+    github: gdotdesign/cr-dotenv
+
 license: MIT

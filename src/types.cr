@@ -98,7 +98,7 @@ module Giphy
 
     @[JSON::Field(key: "images")]
     # An object containing data for various available formats and sizes of this GIF.
-    property images : Images
+    property images : Images?
 
     @[JSON::Field(key: "title")]
     # The title that appears on giphy.com for this GIF.
