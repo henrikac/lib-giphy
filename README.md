@@ -21,7 +21,7 @@ To get the API key that is required to create a new `Giphy::Client` you need to 
 ## Usage
 
 ```crystal
-require "giphy"
+require "lib-giphy"
 
 giphy = Giphy::Client.new <api_key>
 
