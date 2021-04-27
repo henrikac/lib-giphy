@@ -4,7 +4,7 @@ require "./types"
 
 # `LibGiphy` is a library that makes it easy to interact with the GIPHY API.
 module Giphy
-  VERSION = "0.5.0"
+  VERSION = "0.6.0"
 
   # Giphy::Client is the object that communicates with the GIPHY API.
   #
@@ -145,9 +145,7 @@ module Giphy
       raise Exception.new("#{response.status_code} - #{response.status_message}")
     end
 
-    # Generates a random id that can be used as *random_id* in 
-    # `Giphy::SearchParam`, `Giphy::TrendingParam`, `Giphy::TranslateParan` 
-    # and `Giphy::RandomParam`.
+    # Generates a random id that can be used as *random_id* 2when sending a request to GIPHY.
     #
     # NOTE: for more information see https://developers.giphy.com/docs/api/endpoint#random-id
     def generate_random_id : String
@@ -158,6 +156,57 @@ module Giphy
 
       if response.status.ok?
         return JSON.parse(response.body)["data"]["random_id"].to_s
+      end
+
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
+    end
+
+    # Returns a gif based on the specified *gif_id*.
+    #
+    # An `ArgumentError` is raised if *gif_id* is an empty string
+    def get_by_id(gif_id : String, random_id : String = "") : GifDataSingle
+      if gif_id.empty?
+        raise ArgumentError.new("gif_id is undefined")
+      end
+
+      url_path = "/v1/gifs/#{gif_id}"
+      param_hash = {"api_key" => @api_key}
+
+      if !random_id.empty?
+        param_hash["random_id"] = random_id
+      end
+
+      response = send_request(url_path, param_hash)
+
+      if response.status.ok?
+        return GifDataSingle.from_json(response.body)
+      end
+
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
+    end
+
+    # Returns gifs based on the specified *gif_ids*.
+    #
+    # An `ArgumentError` is raised if *gif_ids* is empty.
+    def get_by_ids(gif_ids : Array(String), random_id : String = "") : GifData
+      if gif_ids.empty?
+        raise ArgumentError.new("could not find any gif ids")
+      end
+
+      url_path = "/v1/gifs"
+      param_hash = {
+        "api_key" => @api_key,
+        "ids" => gif_ids.join(","),
+      }
+
+      if !random_id.empty?
+        param_hash["random_id"] = random_id
+      end
+
+      response = send_request(url_path, param_hash)
+
+      if response.status.ok?
+        return GifData.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")

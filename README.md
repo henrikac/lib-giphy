@@ -35,12 +35,24 @@ gifs.data.each do |gif|
 end
 ```
 
-Each `Giphy::Client` method can also takes a `Param` object.  
+The `Giphy::Client` methods in the example above can also take a `Param` object as a second argument.  
 Different types of `Param`:
 * `SearchParam`
 * `TrendingParam`
 * `TranslateParam`
 * `RandomParam`
+
+```crystal
+require "lib-giphy"
+
+giphy = Giphy::Client.new <api_key>
+
+# can be used in Param objects or as an argument in some methods
+random_id = giphy.generate_random_id # => "3640f6095c9a1f0f4e544b764d238b25"
+
+gif_by_id = giphy.get_by_id("xT4uQulxzV39haRFjG")
+gifs_by_ids = giphy.get_by_ids(["xT4uQulxzV39haRFjG", "3og0IPxMM0erATueVW"])
+```
 
 ## Contributing
 

@@ -187,4 +187,49 @@ describe Giphy::Client do
       str1.should_not eq str2
     end
   end
+
+  describe "#get_by_id" do
+    it "should return a gif" do
+      gif_id = "102jf1094fn18394fn"
+      uri = "https://api.giphy.com/v1/gifs/#{gif_id}?api_key=#{API_KEY}"
+      test_data = File.read("./spec/data/get-by-id.json")
+      WebMock.stub(:get, uri)
+        .with(headers: {"Content-Type" => "application/json"})
+        .to_return(body: test_data)
+      
+      g = Giphy::Client.new API_KEY
+
+      response = g.get_by_id(gif_id)
+      response.meta.status.should eq 200
+    end
+
+    it "should raise an ArgumentError if gif_id is an empty string" do
+      expect_raises(ArgumentError) do
+        Giphy::Client.new(API_KEY).get_by_id("")
+      end
+    end
+  end
+
+  describe "#get_by_ids" do
+    it "should return one or more gifs" do
+      ids = ["8914jf1384j", "04mf04f0qw4f"]
+      uri = "https://api.giphy.com/v1/gifs?api_key=#{API_KEY}&ids=#{ids[0]},#{ids[1]}"
+      test_data = File.read("./spec/data/get-by-ids.json")
+      WebMock.stub(:get, uri)
+        .with(headers: {"Content-Type" => "application/json"})
+        .to_return(body: test_data)
+      
+      g = Giphy::Client.new API_KEY
+
+      response = g.get_by_ids(ids)
+      response.meta.status.should eq 200
+    end
+
+    it "should raise an ArgumentError if gif_ids is empty" do
+      expect_raises(ArgumentError) do
+        ids = Array(String).new
+        Giphy::Client.new(API_KEY).get_by_ids(ids)
+      end
+    end
+  end
 end
