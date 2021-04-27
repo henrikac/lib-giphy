@@ -6,6 +6,8 @@ require "../src/**"
 
 Dotenv.load
 
+API_KEY = ENV["GIPHY_API_KEY"]
+
 describe Giphy::Client do
   describe "#initialize" do
     it "should raise ArgumentError if api_key is an empty string" do
@@ -17,7 +19,7 @@ describe Giphy::Client do
 
   describe "#search" do
     it "should raise ArgumentError if q is an empty string" do
-      g = Giphy::Client.new ENV["API_KEY"]
+      g = Giphy::Client.new API_KEY
 
       expect_raises(ArgumentError) do
         g.search("")
@@ -25,15 +27,14 @@ describe Giphy::Client do
     end
 
     it "should return 25 gifs by default" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/search?api_key=#{api_key}&limit=25&offset=0&q=cats"
+      uri = "https://api.giphy.com/v1/gifs/search?api_key=#{API_KEY}&limit=25&offset=0&q=cats"
       # TODO: not happy about having to prefix with ./spec
       test_data = File.read("./spec/data/search-default.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
 
       response = g.search("cats")
       response.meta.status.should eq 200
@@ -42,14 +43,13 @@ describe Giphy::Client do
     end
 
     it "should return gifs based on parameters" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/search?api_key=#{api_key}&limit=1&offset=0&q=cats"
+      uri = "https://api.giphy.com/v1/gifs/search?api_key=#{API_KEY}&limit=1&offset=0&q=cats"
       test_data = File.read("./spec/data/search-limited.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
       sp = Giphy::SearchParam.new(limit: 1)
 
       response = g.search("cats", sp)
@@ -61,14 +61,13 @@ describe Giphy::Client do
 
   describe "#trending" do
     it "should return 25 gifs by default" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/trending?api_key=#{api_key}&limit=25&offset=0"
+      uri = "https://api.giphy.com/v1/gifs/trending?api_key=#{API_KEY}&limit=25&offset=0"
       test_data = File.read("./spec/data/trending-default.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
 
       response = g.trending()
       response.meta.status.should eq 200
@@ -77,14 +76,13 @@ describe Giphy::Client do
     end
 
     it "should return gifs based on parameters" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/trending?api_key=#{api_key}&limit=5&offset=500"
+      uri = "https://api.giphy.com/v1/gifs/trending?api_key=#{API_KEY}&limit=5&offset=500"
       test_data = File.read("./spec/data/trending-limited.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
       tp = Giphy::TrendingParam.new(limit: 5, offset: 500)
 
       response = g.trending(tp)
@@ -96,28 +94,26 @@ describe Giphy::Client do
 
   describe "#translate" do
     it "should return a single gif" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/translate?api_key=#{api_key}&weirdness=0&s=baked+beans"
+      uri = "https://api.giphy.com/v1/gifs/translate?api_key=#{API_KEY}&weirdness=0&s=baked+beans"
       test_data = File.read("./spec/data/translate-default.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
 
       response = g.translate("baked beans")
       response.meta.status.should eq 200
     end
 
     it "should return a gif based on parameters" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/translate?api_key=#{api_key}&weirdness=8&s=baked+beans"
+      uri = "https://api.giphy.com/v1/gifs/translate?api_key=#{API_KEY}&weirdness=8&s=baked+beans"
       test_data = File.read("./spec/data/translate-default.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
       tp = Giphy::TranslateParam.new(weirdness: 8)
 
       response = g.translate("baked beans", tp)
@@ -127,31 +123,68 @@ describe Giphy::Client do
 
   describe "#random" do
     it "should return a single gif" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/random?api_key=#{api_key}"
+      uri = "https://api.giphy.com/v1/gifs/random?api_key=#{API_KEY}"
       test_data = File.read("./spec/data/random-default.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
 
       response = g.random()
       response.meta.status.should eq 200
     end
 
     it "should return a gif based on tag" do
-      api_key = ENV["API_KEY"]
-      uri = "https://api.giphy.com/v1/gifs/random?api_key=#{api_key}&tag=blue+water"
+      uri = "https://api.giphy.com/v1/gifs/random?api_key=#{API_KEY}&tag=blue+water"
       test_data = File.read("./spec/data/random-default.json")
       WebMock.stub(:get, uri)
         .with(headers: {"Content-Type" => "application/json"})
         .to_return(body: test_data)
 
-      g = Giphy::Client.new api_key
+      g = Giphy::Client.new API_KEY
 
       response = g.random("blue water")
       response.meta.status.should eq 200
+    end
+  end
+
+  describe "#generate_random_id" do
+    it "should return a non-empty string" do
+      uri = "https://api.giphy.com/v1/randomid?api_key=#{API_KEY}"
+      test_data = "{\"data\": {\"random_id\": \"#{Random::Secure.hex}\"}}"
+      WebMock.stub(:get, uri)
+        .to_return(body: test_data)
+      
+      g = Giphy::Client.new API_KEY
+
+      result = g.generate_random_id
+      result.should_not be_empty
+    end
+
+    it "should return a random string" do
+      uri = "https://api.giphy.com/v1/randomid?api_key=#{API_KEY}"
+
+      # Setup for random id #1
+      test_data = "{\"data\": {\"random_id\": \"#{Random::Secure.hex}\"}}"
+      WebMock.stub(:get, uri)
+        .to_return(body: test_data)
+      
+      g = Giphy::Client.new API_KEY
+
+      str1 = g.generate_random_id
+
+      # TODO: Figure out how to do this better
+      WebMock.reset
+      # Setup for random id #2
+      test_data = "{\"data\": {\"random_id\": \"#{Random::Secure.hex}\"}}"
+      WebMock.stub(:get, uri)
+        .to_return(body: test_data)
+
+      str2 = g.generate_random_id
+
+      # Asserting
+      str1.should_not eq str2
     end
   end
 end

@@ -145,6 +145,24 @@ module Giphy
       raise Exception.new("#{response.status_code} - #{response.status_message}")
     end
 
+    # Generates a random id that can be used as *random_id* in 
+    # `Giphy::SearchParam`, `Giphy::TrendingParam`, `Giphy::TranslateParan` 
+    # and `Giphy::RandomParam`.
+    #
+    # NOTE: for more information see https://developers.giphy.com/docs/api/endpoint#random-id
+    def generate_random_id : String
+      url_path = "/v1/randomid"
+      param_hash = {"api_key" => @api_key}
+
+      response = send_request(url_path, param_hash)
+
+      if response.status.ok?
+        return JSON.parse(response.body)["data"]["random_id"].to_s
+      end
+
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
+    end
+
     # Returns a Hash with parameters that is required to send
     # a request to the GIPHY API.
     private def get_param_hash(params : Param) : Hash(String, String)
