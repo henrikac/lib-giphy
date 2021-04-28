@@ -42,17 +42,21 @@ Different types of `Param`:
 * `TranslateParam`
 * `RandomParam`
 
-```crystal
-require "lib-giphy"
-
-giphy = Giphy::Client.new <api_key>
-
-# can be used in Param objects or as an argument in some methods
-random_id = giphy.generate_random_id # => "3640f6095c9a1f0f4e544b764d238b25"
-
-gif_by_id = giphy.get_by_id("xT4uQulxzV39haRFjG")
-gifs_by_ids = giphy.get_by_ids(["xT4uQulxzV39haRFjG", "3og0IPxMM0erATueVW"])
-```
+## Supported endpoints
+* [X] Trending
+* [X] Search
+* [X] Translate
+* [X] Random
+* [ ] Action Register
+* [X] Random ID
+* [X] Get GIF by ID
+* [X] Get GIFs by ID
+* [ ] Upload
+* [ ] Categories
+* [ ] Autocomplete
+* [ ] Channel Search
+* [ ] Search Suggestions
+* [ ] Trending Search Terms
 
 ## Contributing
 
