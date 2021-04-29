@@ -1,6 +1,8 @@
 require "http/client"
 require "./params"
-require "./types"
+require "./types/category"
+require "./types/gif"
+# require "./types"
 
 # `LibGiphy` is a library that makes it easy to interact with the GIPHY API.
 module Giphy
@@ -47,7 +49,7 @@ module Giphy
     # params = Giphy::SearchParam.new 10
     # gifs = g.search("cats", params) # returns 10 gifs
     # ```
-    def search(q : String, params = SearchParam.new) : GifData
+    def search(q : String, params = SearchParam.new) : GifCollection
       if q.empty?
         raise ArgumentError.new(message = "q is undefined")
       end
@@ -59,7 +61,7 @@ module Giphy
       response = send_request(url_path, param_hash)
 
       if response.status.ok?
-        return GifData.from_json(response.body)
+        return GifCollection.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")
@@ -76,14 +78,14 @@ module Giphy
     #   puts gif.title
     # end
     # ```
-    def trending(params = TrendingParam.new) : GifData
+    def trending(params = TrendingParam.new) : GifCollection
       url_path = "/v1/gifs/trending"
       param_hash = get_param_hash(params)
 
       response = send_request(url_path, param_hash)
 
       if response.status.ok?
-        return GifData.from_json(response.body)
+        return GifCollection.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")
@@ -100,7 +102,7 @@ module Giphy
     #
     # puts gif.data.title
     # ```
-    def translate(s : String, params = TranslateParam.new) : GifDataSingle
+    def translate(s : String, params = TranslateParam.new) : Gif
       if s.empty?
         raise ArgumentError.new(message = "s is undefined")
       end
@@ -112,7 +114,7 @@ module Giphy
       response = send_request(url_path, param_hash)
 
       if response.status.ok?
-        return GifDataSingle.from_json(response.body)
+        return Gif.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")
@@ -128,7 +130,7 @@ module Giphy
     #
     # puts gif.data.url
     # ```
-    def random(tag = "", params = RandomParam.new) : GifDataSingle
+    def random(tag = "", params = RandomParam.new) : Gif
       url_path = "/v1/gifs/random"
       param_hash = get_param_hash(params)
 
@@ -139,7 +141,7 @@ module Giphy
       response = send_request(url_path, param_hash)
 
       if response.status.ok?
-        return GifDataSingle.from_json(response.body)
+        return Gif.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")
@@ -164,7 +166,7 @@ module Giphy
     # Returns a gif based on the specified *gif_id*.
     #
     # An `ArgumentError` is raised if *gif_id* is an empty string
-    def get_by_id(gif_id : String, random_id : String = "") : GifDataSingle
+    def get_by_id(gif_id : String, random_id : String = "") : Gif
       if gif_id.empty?
         raise ArgumentError.new("gif_id is undefined")
       end
@@ -179,7 +181,7 @@ module Giphy
       response = send_request(url_path, param_hash)
 
       if response.status.ok?
-        return GifDataSingle.from_json(response.body)
+        return Gif.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")
@@ -188,7 +190,7 @@ module Giphy
     # Returns gifs based on the specified *gif_ids*.
     #
     # An `ArgumentError` is raised if *gif_ids* is empty.
-    def get_by_ids(gif_ids : Array(String), random_id : String = "") : GifData
+    def get_by_ids(gif_ids : Array(String), random_id : String = "") : GifCollection
       if gif_ids.empty?
         raise ArgumentError.new("could not find any gif ids")
       end
@@ -206,7 +208,23 @@ module Giphy
       response = send_request(url_path, param_hash)
 
       if response.status.ok?
-        return GifData.from_json(response.body)
+        return GifCollection.from_json(response.body)
+      end
+
+      raise Exception.new("#{response.status_code} - #{response.status_message}")
+    end
+
+    # Returns a collection of GIF categories on the GIPHY network.
+    def categories : CategoryCollection
+      url_path = "/v1/gifs/categories"
+      param_hash = {
+        "api_key" => @api_key
+      }
+
+      response = send_request(url_path, param_hash)
+
+      if response.status.ok?
+        return CategoryCollection.from_json(response.body)
       end
 
       raise Exception.new("#{response.status_code} - #{response.status_message}")

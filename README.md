@@ -52,7 +52,7 @@ Different types of `Param`:
 * [X] Get GIF by ID
 * [X] Get GIFs by ID
 * [ ] Upload
-* [ ] Categories
+* [X] Categories
 * [ ] Autocomplete
 * [ ] Channel Search
 * [ ] Search Suggestions

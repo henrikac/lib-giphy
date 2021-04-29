@@ -1,0 +1,12 @@
+{
+  "data": [],
+  "pagination": {
+    "total_count": 28,
+    "count": 28
+  },
+  "meta": {
+    "msg": "OK",
+    "status": 200,
+    "response_id": "random-response-id"
+  }
+}

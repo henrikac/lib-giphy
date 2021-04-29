@@ -232,4 +232,19 @@ describe Giphy::Client do
       end
     end
   end
+
+  describe "#categories" do
+    it "should return a collection of categories" do
+      uri = "https://api.giphy.com/v1/gifs/categories?api_key=#{API_KEY}"
+      test_data = File.read("./spec/data/get-categories.json")
+      WebMock.stub(:get, uri)
+        .with(headers: {"Content-Type" => "application/json"})
+        .to_return(body: test_data)
+      
+      g = Giphy::Client.new API_KEY
+
+      response = g.categories
+      response.meta.status.should eq 200
+    end
+  end
 end
