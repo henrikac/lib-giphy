@@ -6,7 +6,7 @@ require "./types/gif"
 
 # `LibGiphy` is a library that makes it easy to interact with the GIPHY API.
 module Giphy
-  VERSION = "0.6.0"
+  VERSION = "0.7.0"
 
   # Giphy::Client is the object that communicates with the GIPHY API.
   #
