@@ -190,7 +190,7 @@ describe Giphy::Client do
 
   describe "#get_by_id" do
     it "should return a gif" do
-      gif_id = "102jf1094fn18394fn"
+      gif_id = "xT4uQulxzV39haRFjG"
       uri = "https://api.giphy.com/v1/gifs/#{gif_id}?api_key=#{API_KEY}"
       test_data = File.read("./spec/data/get-by-id.json")
       WebMock.stub(:get, uri)
@@ -212,7 +212,7 @@ describe Giphy::Client do
 
   describe "#get_by_ids" do
     it "should return one or more gifs" do
-      ids = ["8914jf1384j", "04mf04f0qw4f"]
+      ids = ["xT4uQulxzV39haRFjG", "3og0IPxMM0erATueVW"]
       uri = "https://api.giphy.com/v1/gifs?api_key=#{API_KEY}&ids=#{ids[0]},#{ids[1]}"
       test_data = File.read("./spec/data/get-by-ids.json")
       WebMock.stub(:get, uri)
