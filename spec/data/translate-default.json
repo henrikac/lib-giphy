@@ -1,8 +1,201 @@
 {
-  "data":{},
-  "meta":{
-    "msg": "OK",
+  "data": {
+    "type": "gif",
+    "id": "xUySTGFLpxR3i34Spa",
+    "url": "https://giphy.com/gifs/gilmoregirls-season-2-netflix-xUySTGFLpxR3i34Spa",
+    "slug": "gilmoregirls-season-2-netflix-xUySTGFLpxR3i34Spa",
+    "bitly_gif_url": "http://gph.is/2g1RIrK",
+    "bitly_url": "http://gph.is/2g1RIrK",
+    "embed_url": "https://giphy.com/embed/xUySTGFLpxR3i34Spa",
+    "username": "gilmoregirls",
+    "source": "",
+    "title": "season 2 netflix GIF by Gilmore Girls ",
+    "rating": "g",
+    "content_url": "",
+    "source_tld": "",
+    "source_post_url": "",
+    "is_sticker": 0,
+    "import_datetime": "2016-11-11 00:20:10",
+    "trending_datetime": "0000-00-00 00:00:00",
+    "images": {
+      "downsized_large": {
+        "height": "364",
+        "size": "2953004",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.gif&ct=g",
+        "width": "480"
+      },
+      "fixed_height_small_still": {
+        "height": "100",
+        "size": "7012",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100_s.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100_s.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100_s.gif&ct=g",
+        "width": "132"
+      },
+      "original": {
+        "frames": "51",
+        "hash": "cb7a05e7367438e8fb40da4404c19d88",
+        "height": "364",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.mp4&ct=g",
+        "mp4_size": "312648",
+        "size": "2953004",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.webp&ct=g",
+        "webp_size": "627546",
+        "width": "480"
+      },
+      "fixed_height_downsampled": {
+        "height": "200",
+        "size": "129425",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200_d.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200_d.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200_d.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200_d.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200_d.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200_d.webp&ct=g",
+        "webp_size": "70748",
+        "width": "264"
+      },
+      "downsized_still": {
+        "height": "364",
+        "size": "38556",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-downsized_s.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-downsized_s.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-downsized_s.gif&ct=g",
+        "width": "480"
+      },
+      "fixed_height_still": {
+        "height": "200",
+        "size": "18913",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200_s.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200_s.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200_s.gif&ct=g",
+        "width": "264"
+      },
+      "downsized_medium": {
+        "height": "364",
+        "size": "2953004",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.gif&ct=g",
+        "width": "480"
+      },
+      "downsized": {
+        "height": "364",
+        "size": "1953447",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-downsized.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-downsized.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-downsized.gif&ct=g",
+        "width": "480"
+      },
+      "preview_webp": {
+        "height": "148",
+        "size": "48172",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-preview.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-preview.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-preview.webp&ct=g",
+        "width": "196"
+      },
+      "original_mp4": {
+        "height": "364",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy.mp4&ct=g",
+        "mp4_size": "312648",
+        "width": "480"
+      },
+      "fixed_height_small": {
+        "height": "100",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100.mp4&ct=g",
+        "mp4_size": "67649",
+        "size": "289700",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100.webp&ct=g",
+        "webp_size": "141182",
+        "width": "132"
+      },
+      "fixed_height": {
+        "height": "200",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200.mp4&ct=g",
+        "mp4_size": "166308",
+        "size": "842157",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200.webp&ct=g",
+        "webp_size": "340642",
+        "width": "264"
+      },
+      "downsized_small": {
+        "height": "288",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-downsized-small.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-downsized-small.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-downsized-small.mp4&ct=g",
+        "mp4_size": "141489",
+        "width": "379"
+      },
+      "preview": {
+        "height": "238",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-preview.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-preview.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-preview.mp4&ct=g",
+        "mp4_size": "40138",
+        "width": "313"
+      },
+      "fixed_width_downsampled": {
+        "height": "152",
+        "size": "79749",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200w_d.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w_d.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w_d.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200w_d.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w_d.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w_d.webp&ct=g",
+        "webp_size": "45880",
+        "width": "200"
+      },
+      "fixed_width_small_still": {
+        "height": "76",
+        "size": "4582",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100w_s.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w_s.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w_s.gif&ct=g",
+        "width": "100"
+      },
+      "fixed_width_small": {
+        "height": "76",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100w.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w.mp4&ct=g",
+        "mp4_size": "43641",
+        "size": "188384",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100w.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/100w.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=100w.webp&ct=g",
+        "webp_size": "95964",
+        "width": "100"
+      },
+      "original_still": {
+        "height": "364",
+        "size": "63840",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy_s.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy_s.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy_s.gif&ct=g",
+        "width": "480"
+      },
+      "fixed_width_still": {
+        "height": "152",
+        "size": "12644",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200w_s.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w_s.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w_s.gif&ct=g",
+        "width": "200"
+      },
+      "looping": {
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-loop.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-loop.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-loop.mp4&ct=g",
+        "mp4_size": "1321146"
+      },
+      "fixed_width": {
+        "height": "152",
+        "mp4": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200w.mp4?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w.mp4&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w.mp4&ct=g",
+        "mp4_size": "115988",
+        "size": "592140",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200w.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w.gif&ct=g",
+        "webp": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/200w.webp?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w.webp&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=200w.webp&ct=g",
+        "webp_size": "242702",
+        "width": "200"
+      },
+      "preview_gif": {
+        "height": "94",
+        "size": "45546",
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/giphy-preview.gif?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-preview.gif&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=giphy-preview.gif&ct=g",
+        "width": "124"
+      },
+      "480w_still": {
+        "url": "https://media4.giphy.com/media/xUySTGFLpxR3i34Spa/480w_s.jpg?cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=480w_s.jpg&ct=g&cid=6542f68eadfcb6d39e8538526ac3c16951bca06a0080c7ce&rid=480w_s.jpg&ct=g",
+        "width": "480",
+        "height": "364"
+      }
+    },
+    "user": {
+      "avatar_url": "https://media4.giphy.com/channel_assets/gilmoregirls/Z7UIgXCANSoA.png",
+      "banner_image": "https://media4.giphy.com/channel_assets/netflixgg/OnO4LqQZkJMa.png",
+      "banner_url": "https://media4.giphy.com/channel_assets/netflixgg/OnO4LqQZkJMa.png",
+      "profile_url": "https://giphy.com/gilmoregirls/",
+      "username": "gilmoregirls",
+      "display_name": "Gilmore Girls ",
+      "description": "Watch Gilmore Girls Seasons 1-7 on Netflix. A Year in the Life premieres November 25. ",
+      "is_verified": true,
+      "website_url": "http://netflix.com/title/80109415",
+      "instagram_url": "https://instagram.com/GilmoreGirls"
+    }
+  },
+  "meta": {
     "status": 200,
-    "response_id": "random-response-id"
+    "msg": "OK",
+    "response_id": "adfcb6d39e8538526ac3c16951bca06a0080c7ce"
   }
 }
