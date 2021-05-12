@@ -6,6 +6,8 @@ A library that makes it easy to interact with the [GIPHY API](https://developers
 
 To get the API key that is required to create a new `Giphy::Client` you need to create a GIPHY app.
 
+> "We require all apps that use GIPHY API to conspicuously display "Powered By GIPHY" attribution marks where the API is utilized (see SDK attribution guide [here](https://developers.giphy.com/docs/sdk/#data-collection)). You can find approved [official logo marks here](giphymedia.s3.amazonaws.com/giphy-attribution-marks.zip)." - [GIPHY API](https://developers.giphy.com/docs/api#quick-start-guide)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
